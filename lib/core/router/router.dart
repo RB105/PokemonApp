@@ -1,6 +1,7 @@
+// ignore_for_file: body_might_complete_normally_nullable
+
 import 'package:flutter/material.dart';
 import 'package:pokemonn/view/home_page.dart';
-import 'package:pokemonn/view/info_page.dart';
 
 class RouteGenerator {
   static final RouteGenerator _generator = RouteGenerator._init();
@@ -9,12 +10,10 @@ class RouteGenerator {
 
   RouteGenerator._init();
 
-  Route? onGenerate(RouteSettings settings) {
+  Route<dynamic>? onGenerate(RouteSettings settings) {
     switch (settings.name) {
       case '/':
         return _navigate(const HomePage());
-      case 'info':
-        return _navigate(const InfoPage());
     }
   }
 

@@ -1,9 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/src/widgets/container.dart';
-import 'package:flutter/src/widgets/framework.dart';
 
 import '../data/model/pokemon_model.dart';
 import '../data/service/pokemon_service.dart';
+import 'info_page.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
@@ -48,7 +47,11 @@ class _HomePageState extends State<HomePage> {
                       itemBuilder: (context, index) {
                         return InkWell(
                           onTap: () {
-                           Navigator.pushNamed(context, 'info');
+                            Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                  builder: (context) => InfoPage(data: snapshot.data!.pokemon![index])
+                                ));
                           },
                           child: Stack(
                             children: [
@@ -115,18 +118,21 @@ class _HomePageState extends State<HomePage> {
         Padding(
           padding: EdgeInsets.symmetric(
               horizontal: MediaQuery.of(context).size.width * 0.1),
-          child: TextFormField(
-            showCursor: false,
-            maxLength: 15,
-            maxLines: 1,
-            textAlign: TextAlign.center,
-            decoration: InputDecoration(
-                hintText: "Search Pokemon",
-                filled: true,
-                fillColor: const Color(0xffE5E5E5),
-                border: OutlineInputBorder(
-                    borderRadius: BorderRadius.circular(30.0),
-                    borderSide: BorderSide.none)),
+          child: SizedBox(
+            width: MediaQuery.of(context).size.width * 0.75,
+            child: TextFormField(
+              showCursor: false,
+              maxLength: 15,
+              maxLines: 1,
+              textAlign: TextAlign.center,
+              decoration: InputDecoration(
+                  hintText: "Search Pokemon",
+                  filled: true,
+                  fillColor: const Color(0xffE5E5E5),
+                  border: OutlineInputBorder(
+                      borderRadius: BorderRadius.circular(30.0),
+                      borderSide: BorderSide.none)),
+            ),
           ),
         ),
         Container(
