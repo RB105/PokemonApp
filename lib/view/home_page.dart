@@ -48,7 +48,7 @@ class _HomePageState extends State<HomePage> {
                       itemBuilder: (context, index) {
                         return InkWell(
                           onTap: () {
-                           
+                           Navigator.pushNamed(context, 'info');
                           },
                           child: Stack(
                             children: [
