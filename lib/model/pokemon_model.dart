@@ -2,6 +2,8 @@
 //
 //     final pokemonModel = pokemonModelFromJson(jsonString);
 
+// ignore_for_file: constant_identifier_names
+
 import 'dart:convert';
 
 PokemonModel pokemonModelFromJson(String str) =>
@@ -115,10 +117,6 @@ class Evolution {
         name: json["name"],
       );
 
-  Map<String, dynamic> toJson() => {
-        "num": num,
-        "name": name,
-      };
 }
 
 enum Type {
@@ -170,9 +168,7 @@ class EnumValues<T> {
   EnumValues(this.map);
 
   Map<T, String> get reverse {
-    if (reverseMap == null) {
-      reverseMap = map.map((k, v) => new MapEntry(v, k));
-    }
+    reverseMap ??= map.map((k, v) => MapEntry(v, k));
     return reverseMap!;
   }
 }
