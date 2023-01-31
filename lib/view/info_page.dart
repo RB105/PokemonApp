@@ -92,36 +92,95 @@ class InfoPage extends StatelessWidget {
                             topLeft: Radius.circular(60),
                             topRight: Radius.circular(60)),
                       ),
-                      child: Column(children: [
-                          Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceAround,
-                    children: const [
-                      Text(
-                        "Height",
-                        style: TextStyle(
-                            fontSize: 16,
-                            fontWeight: FontWeight.w800,
-                            color: Colors.white),
+                      child: Column(
+                        children: [
+                          Padding(
+                            padding: const EdgeInsets.only(top: 12, bottom: 5),
+                            child: Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceAround,
+                              children: [
+                                Column(
+                                  mainAxisAlignment: MainAxisAlignment.center,
+                                  children: [
+                                    textHelper("", Colors.white, 18, "Candy:",
+                                        FontWeight.bold),
+                                    Opacity(
+                                      opacity: 0.6,
+                                      child: textHelper(
+                                          "",
+                                          Colors.white,
+                                          16,
+                                          data.candy.toString(),
+                                          FontWeight.bold),
+                                    ),
+                                  ],
+                                ),
+                                Column(
+                                  mainAxisAlignment:
+                                      MainAxisAlignment.spaceEvenly,
+                                  children: [
+                                    textHelper("", Colors.white, 18, "Type:",
+                                        FontWeight.bold),
+                                    SizedBox(
+                                      height:
+                                          MediaQuery.of(context).size.height *
+                                              0.15,
+                                      width: MediaQuery.of(context).size.width *
+                                          0.25,
+                                      child: ListView.builder(
+                                        itemCount: data.type!.length,
+                                        itemBuilder: (context, index) {
+                                          return Opacity(
+                                              opacity: 0.6,
+                                              child: textHelper(
+                                                  "",
+                                                  Colors.white,
+                                                  16,
+                                                  data.type!
+                                                      .elementAt(index)
+                                                      .toString(),
+                                                  FontWeight.bold));
+                                        },
+                                      ),
+                                    )
+                                  ],
+                                ),
+                                Column(
+                                  mainAxisAlignment:
+                                      MainAxisAlignment.spaceEvenly,
+                                  children: [
+                                    textHelper("", Colors.white, 18,
+                                        "Weaknesses", FontWeight.bold),
+                                    SizedBox(
+                                      height:
+                                          MediaQuery.of(context).size.height *
+                                              0.05,
+                                      width: MediaQuery.of(context).size.width *
+                                          0.25,
+                                      child: ListView.builder(
+                                        itemCount: data.weaknesses!.length,
+                                        itemBuilder: (context, index) {
+                                          return Opacity(
+                                              opacity: 0.6,
+                                              child: textHelper(
+                                                  "",
+                                                  Colors.white,
+                                                  16,
+                                                  data.weaknesses!
+                                                      .elementAt(index)
+                                                      .toString(),
+                                                  FontWeight.bold));
+                                        },
+                                      ),
+                                    )
+                                  ],
+                                ),
+                              ],
+                            ),
+                          ),
+                        ],
                       ),
-                      Text(
-                        "Weight",
-                        style: TextStyle(
-                            fontSize: 16,
-                            fontWeight: FontWeight.w800,
-                            color: Colors.white),
-                      ),
-                      Text(
-                        "Weaknesses",
-                        style: TextStyle(
-                            fontSize: 16,
-                            fontWeight: FontWeight.w800,
-                            color: Colors.white),
-                      ),
-                    ],
-                  ),
-                      ],),
-                    )
-                    )
+                    ))
                   ],
                 ),
               ))
@@ -143,7 +202,7 @@ class InfoPage extends StatelessWidget {
           children: [
             IconButton(
                 onPressed: () {
-                  Navigator.pop(context);
+                  Navigator.pushNamed(context, '/');
                 },
                 icon: const Icon(Icons.arrow_back_ios_new_outlined)),
             SizedBox(
